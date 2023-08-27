@@ -1,26 +1,26 @@
 import { selectPostType } from "./postType.js";
 
 const targets = [
-  { target: "moda" },
-  { target: "salud y bienestar" },
-  { target: "belleza" },
-  { target: "estilo de vida" },
-  { target: "comida" },
-  { target: "mascotas" },
-  { target: "deporte" },
-  { target: "viajes" },
-  { target: "gaming" },
-  { target: "entretenimiento" },
-  { target: "marketing" },
-  { target: "medio ambiente" },
-  { target: "música" },
-  { target: "arte y manualidades" },
-  { target: "emprendimiento" },
-  { target: "finanzas" },
-  { target: "tecnología" },
-  { target: "producción audivisual" },
-  { target: "literatura" },
-  { target: "política" },
+  { target: "fashion", label: "Moda" },
+  { target: "healthWellness", label: "Salud y Bienestar" },
+  { target: "beauty", label: "Belleza" },
+  { target: "lifestyle", label: "Estilo de Vida" },
+  { target: "food", label: "Comida" },
+  { target: "pets", label: "Mascotas" },
+  { target: "sports", label: "Deporte" },
+  { target: "travel", label: "Viajes" },
+  { target: "gaming", label: "Gaming" },
+  { target: "entertainment", label: "Entretenimiento" },
+  { target: "marketing", label: "Marketing" },
+  { target: "environment", label: "Medio Ambiente" },
+  { target: "music", label: "Música" },
+  { target: "artsCrafts", label: "Arte y Manualidades" },
+  { target: "entrepreneurship", label: "Emprendimiento" },
+  { target: "finance", label: "Finanzas" },
+  { target: "technology", label: "Tecnología" },
+  { target: "audioVisualProduction", label: "Producción Audiovisual" },
+  { target: "literature", label: "Literatura" },
+  { target: "politics", label: "Política" },
 ];
 
 let selectedTargets = [];
@@ -39,14 +39,14 @@ function selectTarget(target) {
 }
 
 function renderTargets() {
-  const opcionesHTML = targets.map(({ target }) => {
+  const opcionesHTML = targets.map(({ target, label }) => {
     const isSelected = selectedTargets.includes(target);
     const selectedClass = isSelected ? "selected" : "";
     return `<li>
                 <a class="inline-block border border-gray-200 rounded py-1 px-3 text-black transition ease-out duration-300 hover:bg-blue-500 hover:text-white target-option ${selectedClass}"
                    onclick="selectTarget('${target}')"
                    href="#" data-target="${target}">
-                  ${target}
+                  ${label}
                 </a>
               </li>`;
   });
