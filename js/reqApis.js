@@ -1,6 +1,5 @@
-import apiKey from "./config.js";
-
-const modelId = "text-davinci-003";
+//import apiKey from "./config.js";
+import { apiKeyUser } from "./partials/reqApiKey.js";
 
 export async function makeImg(promtImg) {
   // URL de la API de DALL·E 2.0
@@ -18,7 +17,7 @@ export async function makeImg(promtImg) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
+      Authorization: `Bearer ${apiKeyUser}`,
     },
     body: JSON.stringify(requestData),
   };
@@ -37,6 +36,7 @@ export async function makeImg(promtImg) {
 }
 
 export async function makeText(prompt, tks) {
+  const modelId = "text-davinci-003";
   const data = {
     prompt: prompt,
     max_tokens: tks,
@@ -47,7 +47,7 @@ export async function makeText(prompt, tks) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
+      Authorization: `Bearer ${apiKeyUser}`,
     },
     body: JSON.stringify(data),
   };

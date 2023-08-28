@@ -10,6 +10,7 @@ function postInfo(type, opcionSelected) {
     : post.push({
         postImage: { style: opcionSelected },
       });
+  console.log(post);
   moreInfo();
 }
 
@@ -45,20 +46,20 @@ export function buildTypePost(type) {
   let opciones, pregunta;
   if (type === "video") {
     opciones = [
-      { duracion: "15", texto: "15 segundos" },
-      { duracion: "30", texto: "30 segundos" },
-      { duracion: "1", texto: "1 minutos" },
-      { duracion: "2", texto: "2 minutos" },
-      { duracion: "3", texto: "3 minutos" },
-      { duracion: "4", texto: "4 minutos" },
-      { duracion: "5", texto: "5 minutos" },
+      { duracion: "15 seconds", texto: "15 segundos" },
+      { duracion: "30 seconds", texto: "30 segundos" },
+      { duracion: "1 minute", texto: "1 minutos" },
+      { duracion: "2 minutes", texto: "2 minutos" },
+      { duracion: "3 minutes", texto: "3 minutos" },
+      { duracion: "4 minutes", texto: "4 minutos" },
+      { duracion: "5 minutes", texto: "5 minutos" },
     ];
     pregunta = "¿De qué duración deseas el video? ...";
   } else if (type === "imagen") {
     opciones = [
-      { tipo: "Una fotografía" },
-      { tipo: "Un diseño" },
-      { tipo: "Un dibujo" },
+      { tipo: "a photography", texto: "Fotografía" },
+      { tipo: "a digital art", texto: "Arte digital" },
+      { tipo: "a painting", texto: "Pintura" },
     ];
     pregunta = "¿De qué tipo deseas la imagen? ...";
   }
@@ -68,10 +69,10 @@ export function buildTypePost(type) {
       return `<li class="mr-3 mt-2">
                 <a class="inline-block border rounded py-1 px-3 text-black transition ease-out duration-300 hover:bg-blue-500 hover:text-white"
                    onclick="postInfo('${type}', '${
-        type === "video" ? opcion.texto : opcion.tipo
+        type === "video" ? opcion.duracion : opcion.tipo
       }')"
                    href="#">
-                  ${type === "video" ? opcion.texto : opcion.tipo}
+                  ${type === "video" ? opcion.texto : opcion.texto}
                 </a>
               </li>`;
     })

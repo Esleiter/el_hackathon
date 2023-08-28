@@ -21,3 +21,6 @@
 #bu:disabled {
     background: gray;
 }
+#next-button:disabled {
+    background: gray;
+}

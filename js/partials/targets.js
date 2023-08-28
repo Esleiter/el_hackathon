@@ -25,7 +25,7 @@ const targets = [
 
 let selectedTargets = [];
 
-function selectTarget(target) {
+/*function selectTarget(target) {
   if (selectedTargets.includes(target)) {
     selectedTargets = selectedTargets.filter((t) => t !== target);
   } else if (selectedTargets.length < 2) {
@@ -36,6 +36,11 @@ function selectTarget(target) {
   if (selectedTargets.length === 2) {
     selectPostType();
   }
+}*/
+
+function selectTarget(target) {
+  selectedTargets.push(target);
+  selectPostType();
 }
 
 function renderTargets() {
@@ -56,7 +61,7 @@ function renderTargets() {
   )}</ul>`;
 
   const resultadoHTML = `<div id="q" class="focus:outline-none w-full rounded-lg p-2 text-base bg-gray-100 border border-transparent appearance-none rounded-tg text-gray-600">
-                            ¿Con qué se relaciona tu contenido? (Selecciona hasta 2 opciones) ...
+                            ¿Con qué se relaciona tu contenido? ...
                             <div>
                               ${listaHTML}
                             </div>

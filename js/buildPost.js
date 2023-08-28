@@ -1,7 +1,7 @@
 import { makeImg, makeText } from "./reqApis.js";
 import { selectedTargets } from "./partials/targets.js";
 import { post } from "./partials/postType.js";
-import { getRandomMusic } from "./music.js";
+//import { getRandomMusic } from "./music.js";
 
 let moreInfo;
 
@@ -16,38 +16,43 @@ export function makePost() {
 }
 
 async function makePostVideo() {
-  var promptVideo =
-    "Genera un guion para un video de " +
-    post[0].postVideo.duration +
-    " para una campaña publicitaria de Instagram relacionado con " +
-    selectedTargets[0] +
-    "y" +
-    selectedTargets[1] +
-    ", Informacion adicional:" +
-    moreInfo +
-    ", EVITA INCLUIR HASHTAGS '#EJEMPLO'";
-
-  var res = await makeText(promptVideo, 400);
+  var res = await makeText(
+    "Generate a detailed script for a video with " +
+      post[0].postVideo.duration +
+      " of duration, for an Instagram ad campaign related to " +
+      selectedTargets[0] /*
+  " and " +
+  selectedTargets[1] +*/ +
+      ", Additional Information:" +
+      moreInfo +
+      ". DO NOT INCLUDE HASHTAGS '#EXAMPLE'.",
+    400
+  );
+  var resTranslate = await makeText(res + " en español.", 400);
   document.getElementById("lorem").innerHTML = "";
-  document.getElementById("post").innerHTML =
-    res.replace(/\s*\]\s*/g, "] <br>") +
+  document.getElementById("post").innerHTML = resTranslate.replace(
+    /\s*\]\s*/g,
+    "] <br>"
+  );
+  /*+
     "<br> 🎵 Puedes utilizar esta música que esta en tendencia: " +
-    getRandomMusic();
+    getRandomMusic();*/
   return res;
 }
 
 async function makePostImage() {
-  var promptImage =
-    "Genera la descripcion detallada de " +
-    post[0].postImage.style +
-    " para redes sociales, relacionado con " +
-    selectedTargets[0] +
-    " y " +
-    selectedTargets[1] +
-    ", Informacion adicional: " +
-    moreInfo;
-
-  var res = await makeText(promptImage, 400);
+  var res = await makeText(
+    "as you imagine and describe a" +
+      post[0].postImage.style +
+      "related to" +
+      selectedTargets[0] /*
+      " and " +
+      selectedTargets[1] */ +
+      ", Additional Information:" +
+      moreInfo +
+      ". DO NOT INCLUDE HASHTAGS '#EXAMPLE'.",
+    100
+  );
   var imagen = await makeImg(res);
   document.getElementById("lorem").innerHTML = "";
   document.getElementById(
@@ -59,20 +64,14 @@ async function makePostImage() {
 export async function makeDescription(resPost) {
   resPost = await resPost;
   let description = await makeText(
-    "genera un texto descriptivo para post de Instagram que acompañara al siguiente contenido: " +
+    "Generates a descriptive text for an Instagram post that will accompany the following content: " +
       resPost +
-      '.    añade muchos emojis, EVITA INCLUIR HASHTAGS "#EJEMPLO"',
-    200
+      ". It is essential that you add many emoticons within the entire text. Generates relevant hashtags related to this post," +
+      ". ONLY INCLUDE HASHTAGS '#EXAMPLE'. Traduce y muestra solo texto en español sin excluir emojis.",
+    400
   );
-  document.getElementById("description").innerHTML = description;
-}
-
-export async function makeHashtags(resPost) {
-  resPost = await resPost;
-  let hashtags = await makeText(
-    "genera los hashtags mas relevantes relacionado con esta publicacion: " +
-      resPost,
-    50
+  document.getElementById("description").innerHTML = description.replace(
+    /#/,
+    "</br></br></br> #"
   );
-  document.getElementById("hashtags").innerHTML = hashtags;
 }
