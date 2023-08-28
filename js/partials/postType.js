@@ -1,3 +1,18 @@
+import { moreInfo } from "./moreInfo.js";
+
+export var post = [];
+
+function postInfo(type, opcionSelected) {
+  type === "video"
+    ? post.push({
+        postVideo: { duration: opcionSelected },
+      })
+    : post.push({
+        postImage: { style: opcionSelected },
+      });
+  moreInfo();
+}
+
 export function selectPostType() {
   const opciones = [
     { tipo: "Video", onclick: "buildTypePost('video')" },
@@ -52,7 +67,9 @@ export function buildTypePost(type) {
     .map((opcion) => {
       return `<li class="mr-3 mt-2">
                 <a class="inline-block border rounded py-1 px-3 text-black transition ease-out duration-300 hover:bg-blue-500 hover:text-white"
-                   onclick="moreInfo()"
+                   onclick="postInfo('${type}', '${
+        type === "video" ? opcion.texto : opcion.tipo
+      }')"
                    href="#">
                   ${type === "video" ? opcion.texto : opcion.tipo}
                 </a>
@@ -71,3 +88,5 @@ export function buildTypePost(type) {
 
   document.getElementById("q").innerHTML = resultadoHTML;
 }
+
+window.postInfo = postInfo;

@@ -1,28 +1,30 @@
 import { makeImg, makeText } from "./reqApis.js";
 import { selectedTargets } from "./partials/targets.js";
+import { post } from "./partials/postType.js";
 import { getRandomMusic } from "./music.js";
 
-let post = {
-  postVideo: { duration: "", moreInfo: "" },
-  postImage: { style: "", moreInfo: "" },
-};
+let moreInfo;
 
 export function makePost() {
-  console.log(selectedTargets);
-  return post;
+  moreInfo = document.getElementById("more-info").value;
+  let typePost = Object.keys(post[0])[0];
+  if (typePost === "postVideo") {
+    return makePostVideo();
+  } else {
+    return makePostImage();
+  }
 }
 
 async function makePostVideo() {
-  typePost.push(document.getElementById("more-info").value);
   var promptVideo =
     "Genera un guion para un video de " +
-    post.postVideo.duration +
+    post[0].postVideo.duration +
     " para una campaña publicitaria de Instagram relacionado con " +
     selectedTargets[0] +
     "y" +
     selectedTargets[1] +
     ", Informacion adicional:" +
-    typePost[2] +
+    moreInfo +
     ", EVITA INCLUIR HASHTAGS '#EJEMPLO'";
 
   var res = await makeText(promptVideo, 400);
@@ -35,16 +37,15 @@ async function makePostVideo() {
 }
 
 async function makePostImage() {
-  typePost.push(document.getElementById("more-info").value);
   var promptImage =
     "Genera la descripcion detallada de " +
-    typePost[0] +
+    post[0].postImage.style +
     " para redes sociales, relacionado con " +
     selectedTargets[0] +
     " y " +
     selectedTargets[1] +
     ", Informacion adicional: " +
-    typePost[1];
+    moreInfo;
 
   var res = await makeText(promptImage, 400);
   var imagen = await makeImg(res);
