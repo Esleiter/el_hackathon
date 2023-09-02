@@ -1,7 +1,7 @@
 import { makeDescription, makePost } from "./buildPost.js";
 
 export async function generate() {
-  document.getElementById("bu").disabled = true;
+  document.getElementById("submit").disabled = true;
   let post = makePost();
   makeDescription(post);
 }

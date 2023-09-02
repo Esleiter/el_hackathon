@@ -29,7 +29,7 @@ async function makePostVideo() {
     400
   );
   var resTranslate = await makeText(res + " en español.", 400);
-  document.getElementById("lorem").innerHTML = "";
+  document.getElementById("section-post").style.display = "block";
   document.getElementById("post").innerHTML = resTranslate.replace(
     /\s*\]\s*/g,
     "] <br>"
@@ -54,7 +54,6 @@ async function makePostImage() {
     100
   );
   var imagen = await makeImg(res);
-  document.getElementById("lorem").innerHTML = "";
   document.getElementById(
     "post"
   ).innerHTML = `<img src="${imagen}" alt="${res}" class="h-auto max-w-full">`;

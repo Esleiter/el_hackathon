@@ -14,13 +14,27 @@
     z-index: 5;
     position: fixed;
     top: 20px;
-    right: 20px;
+    right: 1em;
     font-size: 50px;
     color: #4299e1;
 }
-#bu:disabled {
+#submit:disabled {
     background: gray;
 }
 #next-button:disabled {
     background: gray;
+}
+#powered {
+    color: #000;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.links {
+    text-decoration: none;
+    color: #1c9cea;
+}
+.icons {
+    font-size: 30px;
+    color: #4B5563;
 }

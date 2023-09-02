@@ -10,7 +10,6 @@ function postInfo(type, opcionSelected) {
     : post.push({
         postImage: { style: opcionSelected },
       });
-  console.log(post);
   moreInfo();
 }
 
@@ -32,14 +31,14 @@ export function selectPostType() {
 
   const listaHTML = `<ul class="list-reset flex">${opcionesHTML.join("")}</ul>`;
 
-  const htmlFragment = `<div id="q" class="focus:outline-none w-full rounded-lg p-2 text-base bg-gray-100 border border-transparent appearance-none rounded-tg text-gray-600">
+  const htmlFragment = `<div id="partials" class="focus:outline-none w-full rounded-lg p-2 text-base bg-gray-100 border border-transparent appearance-none rounded-tg text-gray-600">
                               ¿Qué deseas publicar? ...
                               <div>
                                 ${listaHTML}
                               </div>
                             </div>`;
 
-  document.getElementById("q").innerHTML = htmlFragment;
+  document.getElementById("partials").innerHTML = htmlFragment;
 }
 
 export function buildTypePost(type) {
@@ -80,14 +79,14 @@ export function buildTypePost(type) {
 
   const listaHTML = `<ul class="list-reset flex">${opcionesHTML}</ul>`;
 
-  const resultadoHTML = `<div id="q" class="focus:outline-none w-full rounded-lg p-2 text-base bg-gray-100 border border-transparent appearance-none rounded-tg text-gray-600">
+  const resultadoHTML = `<div id="partials" class="focus:outline-none w-full rounded-lg p-2 text-base bg-gray-100 border border-transparent appearance-none rounded-tg text-gray-600">
                               ${pregunta}
                               <div>
                                 ${listaHTML}
                               </div>
                             </div>`;
 
-  document.getElementById("q").innerHTML = resultadoHTML;
+  document.getElementById("partials").innerHTML = resultadoHTML;
 }
 
 window.postInfo = postInfo;
