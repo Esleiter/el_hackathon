@@ -56,7 +56,7 @@ function renderTargets() {
               </li>`;
   });
 
-  const listaHTML = `<ul class="list-reset grid grid-cols-4 gap-4 text-center">${opcionesHTML.join(
+  const listaHTML = `<ul class="list-reset grid grid-cols-2 gap-4 text-center md:grid-cols-3">${opcionesHTML.join(
     ""
   )}</ul>`;
 

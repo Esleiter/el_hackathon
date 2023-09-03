@@ -38,3 +38,13 @@
     font-size: 30px;
     color: #4B5563;
 }
+.load {
+    animation: r 2s linear infinite;
+    transform-origin: 48% 47%;
+  }
+  
+  @keyframes r {
+    to {
+      transform: rotate(360deg)
+    }
+  }

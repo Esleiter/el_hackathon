@@ -3,6 +3,8 @@ import { selectedTargets } from "./partials/targets.js";
 import { post } from "./partials/postType.js";
 //import { getRandomMusic } from "./music.js";
 
+const loadFinish = document.getElementById("loader");
+
 let moreInfo;
 
 export function makePost() {
@@ -37,6 +39,7 @@ async function makePostVideo() {
   /*+
     "<br> 🎵 Puedes utilizar esta música que esta en tendencia: " +
     getRandomMusic();*/
+  loadFinish.style.display = "none";
   return res;
 }
 
@@ -57,6 +60,7 @@ async function makePostImage() {
   document.getElementById(
     "post"
   ).innerHTML = `<img src="${imagen}" alt="${res}" class="h-auto max-w-full">`;
+  loadFinish.style.display = "none";
   return res;
 }
 
