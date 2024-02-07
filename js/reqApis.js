@@ -36,7 +36,7 @@ export async function makeImg(promtImg) {
 }
 
 export async function makeText(prompt, tks) {
-  const modelId = "text-davinci-003";
+  const modelId = "gpt-3.5-turbo-instruct";
   const data = {
     prompt: prompt,
     max_tokens: tks,
