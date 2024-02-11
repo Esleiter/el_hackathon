@@ -1,8 +1,6 @@
-//import apiKey from "./config.js";
-import { apiKeyUser } from "./partials/reqApiKey.js";
+const apiKeyUser = "YOUR_API"; // No requerida por ahora!
 
 export async function makeImg(promtImg) {
-  // URL de la API de DALL·E 2.0
   const apiUrl = "https://apiopenai.esleiter.com/v1/images/generations";
 
   // Datos para enviar en la petición
