@@ -3,7 +3,7 @@ import { apiKeyUser } from "./partials/reqApiKey.js";
 
 export async function makeImg(promtImg) {
   // URL de la API de DALL·E 2.0
-  const apiUrl = "https://api.openai.com/v1/images/generations";
+  const apiUrl = "https://apiopenai.esleiter.com/v1/images/generations";
 
   // Datos para enviar en la petición
   const requestData = {
@@ -54,7 +54,7 @@ export async function makeText(prompt, tks) {
 
   // Envío de la solicitud a la API
   const response = await fetch(
-    `https://api.openai.com/v1/engines/${modelId}/completions`,
+    `https://apiopenai.esleiter.com/v1/engines/${modelId}/completions`,
     requestOptions
   );
   const jsonResponse = await response.json();
