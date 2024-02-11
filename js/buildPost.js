@@ -30,12 +30,13 @@ async function makePostVideo() {
       ". DO NOT INCLUDE HASHTAGS '#EXAMPLE'.",
     400
   );
-  var resTranslate = await makeText(res + " en español.", 400);
-  document.getElementById("section-post").style.display = "block";
-  document.getElementById("post").innerHTML = resTranslate.replace(
-    /\s*\]\s*/g,
-    "] <br>"
+  res = res.replace(/\n\n/g, "<br>");
+  var resTranslate = await makeText(
+    "Translate the following English text to Spanish: " + res,
+    2000
   );
+  document.getElementById("section-post").style.display = "block";
+  document.getElementById("post").innerHTML = resTranslate;
   /*+
     "<br> 🎵 Puedes utilizar esta música que esta en tendencia: " +
     getRandomMusic();*/

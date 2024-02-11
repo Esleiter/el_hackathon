@@ -7,9 +7,10 @@ export async function makeImg(promtImg) {
 
   // Datos para enviar en la petición
   const requestData = {
+    model: "dall-e-3",
     prompt: promtImg,
     n: 1,
-    size: "1024x1024",
+    size: "1792x1024",
   };
 
   // Opciones de configuración para la petición
